@@ -1,0 +1,51 @@
+boolean equals(list l1, list l2)
+{
+	if (empty(l1) and empty(l2))
+	{
+		return true;
+	}
+	else if(l1.size()==l2.size())
+	{
+		return false;
+	}
+	
+	List lTemp=l1+l2; //Listen vereinigen zu einer liste lTemp
+
+	lTemp.mergeSort();	//MergeSort auf lTemp ausführen
+		
+	while(!empty(lTemp))
+	{
+		lTemp=compareItemOneTwo(lTemp);
+	}
+	
+	return true;		
+		
+}
+
+list compareItemOneTwo(list lT)
+{
+	int ersterEintrag=head(lT);
+
+	lT=tail(lT);
+
+	int zweiterEintrag=head(lT);
+
+	if (ersterEintrag==zweiterEintrag)
+	{
+		lT=tail(lT);
+		
+		return lT;
+	}
+	else
+	{
+		equals(list [1,2,3], list[1,2]); //löst in equals() ein false aus.
+	}
+}	 
+			
+	
+		
+		
+	
+
+
+	

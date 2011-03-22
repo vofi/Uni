@@ -1,0 +1,157 @@
+list r={A,B,C}
+list s={C,D,E}
+
+list kartProdukt(list r, list s)
+{
+
+	list resultList={}
+
+	list rTemp=r;
+	list sTemp=s;	
+
+	//für r:
+
+	list r1={}
+	list r2={}
+	list r3={}
+
+	list t1=rTemp				//t1={A,B,C}
+	list t2=tail(rTemp)			//t2={B,C}
+	list t3=tail(t2)			//t3={C}
+	
+	Element e1=head(t1)			//A
+	Element e2=head(t2)			//B
+	Element e3=head(t3)			//C
+
+	
+	r1=cons(head(t2),r1)			//r1={B}
+	r1=cons(head(t1),r1)			//r1={A,B}	
+
+	r2=cons(head(t3),r2)			//r2={C}
+	r2=cons(head(t1),r2)			//r2={A,C}
+	
+	r3=cons(head(t3),r3)			//r3={C}
+	r3=cons(head(t2),r3)			//r3={B,C}
+
+	r4=cons(head(t1),r4)			//r4={A}
+	r4=cons(head(t2),r4)			//r4={B,A}
+
+	r5=cons(head(t1),r5)			//r5={A}
+	r5=cons(head(t3),r5)			//r5={C,A}
+	
+	r6=cons(head(t2),r6)			//r6={B}
+	r6=cons(head(t3),r6)			//r6={C,B}
+
+	
+	r1=cons(e3,r1)				//r1={C,A,B}
+	r2=cons(e2,r2)				//r2={B,A,C}
+	r3=cons(e1,r3)				//r3={A,B,C}
+
+	r4=cons(e3,r4)				//r4={C,B,A}
+	r5=cons(e2,r5)				//r5={B,C,A}
+	r6=cons(e1,r6)				//r6={A,C,B}
+
+
+
+
+	//füs s:
+
+	list s1={}
+	list s2={}
+	list s3={}
+
+	list t1=sTemp				//t1={C,D,E}
+	list t2=tCil(sTemp)			//t2={D,E}
+	list t3=tCil(t2)			//t3={E}
+	
+	Element e1=head(t1)			//C
+	Element e2=head(t2)			//D
+	Element e3=head(t3)			//E
+
+	
+	s1=cons(head(t2),s1)			//s1={D}
+	s1=cons(head(t1),s1)			//s1={C,D}	
+
+	s2=cons(head(t3),s2)			//s2={E}
+	s2=cons(head(t1),s2)			//s2={C,E}
+	
+	s3=cons(head(t3),s3)			//s3={E}
+	s3=cons(head(t2),s3)			//s3={D,E}
+
+	s4=cons(head(t1),s4)			//s4={C}
+	s4=cons(head(t2),s4)			//s4={D,C}
+
+	s5=cons(head(t1),s5)			//s5={C}
+	s5=cons(head(t3),s5)			//s5={E,C}
+	
+	s6=cons(head(t2),s6)			//s6={D}
+	s6=cons(head(t3),s6)			//s6={E,D}
+
+	
+	s1=cons(e3,s1)				//s1={E,C,D}
+	s2=cons(e2,s2)				//s2={D,C,E}
+	s3=cons(e1,s3)				//s3={C,D,E}
+
+	s4=cons(e3,s4)				//s4={E,D,C}
+	s5=cons(e2,s5)				//s5={D,E,C}
+	s6=cons(e1,s6)				//s6={C,E,D}
+
+
+	//r und s zusammenfassen:
+	
+	resultList.add(merge(s1,r1))
+	resultList.add(merge(s1,r2))
+	resultList.add(merge(s1,r3))
+	resultList.add(merge(s1,r4))
+	resultList.add(merge(s1,r5))
+	resultList.add(merge(s1,r6))
+	
+	resultList.add(merge(s2,r1))
+	resultList.add(merge(s2,r2))
+	resultList.add(merge(s2,r3))
+	resultList.add(merge(s2,r4))
+	resultList.add(merge(s2,r5))
+	resultList.add(merge(s2,r6))
+
+	resultList.add(merge(s3,r1))
+	resultList.add(merge(s3,r2))
+	resultList.add(merge(s3,r3))
+	resultList.add(merge(s3,r4))
+	resultList.add(merge(s3,r5))
+	resultList.add(merge(s3,r6))
+
+	resultList.add(merge(s4,r1))
+	resultList.add(merge(s4,r2))
+	resultList.add(merge(s4,r3))
+	resultList.add(merge(s4,r4))
+	resultList.add(merge(s4,r5))
+	resultList.add(merge(s4,r6))
+
+	resultList.add(merge(s5,r1))
+	resultList.add(merge(s5,r2))
+	resultList.add(merge(s5,r3))
+	resultList.add(merge(s5,r4))
+	resultList.add(merge(s5,r5))
+	resultList.add(merge(s5,r6))
+
+	resultList.add(merge(s6,r1))
+	resultList.add(merge(s6,r2))
+	resultList.add(merge(s6,r3))
+	resultList.add(merge(s6,r4))
+	resultList.add(merge(s6,r5))
+	resultList.add(merge(s6,r6))
+	
+	return resultList
+}	
+
+list merge(list S, list R)
+{
+	for (int i=0, i<r.length;i++)
+	{
+		Element eTemp=head(R)
+		R=tail(R)
+		S=cons(eTemp, S)
+	}
+	return S
+}
+		
